@@ -382,7 +382,7 @@
           <div class="provider-tab" id="tab-gemini" onclick="selectProvider('gemini')">
             <div class="prov-logo">🔵</div>
             <div class="prov-name">Gemini</div>
-            <div class="prov-model">gemini-1.5-flash</div>
+            <div class="prov-model">gemini-2.5-flash</div>
           </div>
         </div>
         <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px">Provider sélectionné : <span id="activeProviderLabel" style="color:var(--accent);font-weight:600"></span></div>
@@ -547,7 +547,7 @@ const PROVIDERS = {
   },
   gemini: {
     name: 'Google Gemini',
-    model: 'gemini-1.5-flash',
+    model: 'gemini-2.5-flash',
     placeholder: 'AIza...',
     storageKey: 'kc_key_gemini',
   },
@@ -619,8 +619,8 @@ async function callVisionAI(base64, mimeType, prompt) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ parts: [
-          { inline_data: { mime_type: mimeType, data: base64 } },
-          { text: 'Tu es un nutritionniste expert. Tu réponds toujours en JSON pur, sans markdown, sans backticks.\n\n' + prompt }
+          { text: 'Tu es un nutritionniste expert. Tu réponds toujours en JSON pur, sans markdown, sans backticks.\n\n' + prompt },
+          { inlineData: { mimeType: mimeType, data: base64 } }
         ]}]
       })
     });
