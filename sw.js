@@ -1,4 +1,4 @@
-const CACHE = 'kal-counter-v1';
+const CACHE = 'kal-counter-v2';
 
 const ASSETS = [
   '/Kal-Counter/',
